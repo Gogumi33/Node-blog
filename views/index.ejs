@@ -11,11 +11,16 @@
       <section class="articles">
         <h2 class="articles-heading">최근 게시물</h2>
         <ul class="article-ul">
+          
+          <!-- forEach를 통해 게시물 전체 순회 -->
+          <% data.forEach( post => { %>
             <li>
-              <a href="#">
-                <span>Title 1</span>
-                <span class="article-list-date">2023.01.01</span>
+              <a href="/post/<%= post._id %>">
+                <span><%= post.title %></span>
+                <!-- 날짜와 시간이 모두 들어있는데, 우리는 날짜만 필요하다. -->
+                <span class="article-list-date"><%= post.createdAt.toDateString() %></span>
               </a>
             </li>
+          <% }) %>
         </ul>
       </section>

@@ -2,10 +2,13 @@
 require("dotenv").config();
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
+const connectDb = require("./config/db");
 
 const app = express();
 // env 파일에 포트가 지정되어 있으면 그 포트를 가져다 쓰고, 없다면 3000을 써라.
 const port = process.env.PORT || 3000;
+
+connectDb();
 
 app.use(expressLayouts);
 app.set("view engine", "ejs"); // 뷰 엔진은 ejs 쓸 거야.
