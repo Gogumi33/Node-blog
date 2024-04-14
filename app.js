@@ -25,7 +25,8 @@ app.use(express.static("public"));
 //     res.send("Hello World!");
 // });
 // 이걸 삭제하고 나면 따로 만든 main.js를 사용한다고 선언해줘야함.
-app.use("/", require("./routes/main"));
+app.use("/", require("./routes/main")); // 일반 사용자를 위한 라우트코드
+app.use("/", require("./routes/admin")); // 관리자를 위한 라우트코드
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
