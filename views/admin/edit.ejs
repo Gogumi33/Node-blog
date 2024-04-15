@@ -1,0 +1,20 @@
+<!-- 게시물 수정 화면 - add.ejs랑 매우 비슷 -->
+<a href="/allPosts">&larr; 뒤로</a>
+<div class="admin-title">
+    <h2><%= locals.title %></h2>
+    <form action="/delete/<%= data._id %>?_method=DELETE" method="POST">
+        <input type="submit" value="삭제" class="btn btn-delete">
+    </form>
+</div>
+
+<!-- 원래 폼에서 사용하는 method방식은 POST인데, 이를 PUT으로 바꾸기 위해서 _method를 통해 바꿔주는 것 -->
+<form action="/edit/<%= data._id %>?_method=PUT" method="POST">
+    <label for="title"><b>제목</b></label>
+    <input type="text" name="title" id="title" value="<%= data.title %>">
+
+    <label for="body"><b>내용</b></label>
+    <textarea name="body" id="body" cols="50" rows="10"><%= data.body %></textarea>
+
+    <!-- 이 수정버튼 클릭 시 PUT 요청을 보내게 된다. -->
+    <input type="submit" value="수정" class="btn">
+</form>

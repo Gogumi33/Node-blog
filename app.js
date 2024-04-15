@@ -4,6 +4,8 @@ const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const connectDb = require("./config/db");
 const cookieParser = require("cookie-parser");
+// 폼에서 PUT 과 DELETE를 처리하기 위한 method-override모듈
+const methodOverride = require("method-override");
 
 const app = express();
 // env 파일에 포트가 지정되어 있으면 그 포트를 가져다 쓰고, 없다면 3000을 써라.
@@ -25,6 +27,8 @@ app.use(express.urlencoded({extended: true}));
 
 
 app.use(cookieParser());
+
+app.use(methodOverride("_method"));
 
 
 // 이걸 삭제하고 라우트코드에서 직접 작성하기.
