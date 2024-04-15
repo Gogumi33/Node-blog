@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const connectDb = require("./config/db");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 // env 파일에 포트가 지정되어 있으면 그 포트를 가져다 쓰고, 없다면 3000을 써라.
@@ -21,6 +22,9 @@ app.use(express.static("public"));
 // 파싱(특정한 데이터만 추출)을 하기 위한 필수코드.
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+
+app.use(cookieParser());
 
 
 // 이걸 삭제하고 라우트코드에서 직접 작성하기.
